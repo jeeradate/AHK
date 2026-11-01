@@ -1,0 +1,57 @@
+#SingleInstance Force
+#Requires Autohotkey v2.0+
+
+test()
+
+test(){
+NotePad()
+Sleep 1000
+NotePad()
+}
+
+
+
+NotePad(){
+
+	if (notepadWindow := WinExist("ahk_class Notepad")) {
+        WinActivate notepadWindow
+    } else {
+        Run "notepad.exe"
+        WinWaitActive ("ahk_class Notepad")
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AutoCloseMsgBox("test3.ahk load successfully", 1000,'s30')
+
+AutoCloseMsgBox(text, timeout := 50000, size :='s10' ) {
+    ; Create a GUI window
+    myGui := Gui()
+    myGui.Opt("+AlwaysOnTop")
+    myGui.SetFont(size)
+    myGui.Add("Text", "x10 y10", text)
+
+    ; Show the GUI window
+    myGui.Show("w600 h100")
+
+    ; Set a timer to close the GUI
+    SetTimer () => myGui.Destroy(), -timeout
+
+    ; Wait for the GUI to be closed
+    WinWaitClose(myGui)
+}

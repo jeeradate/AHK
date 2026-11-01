@@ -1,0 +1,46 @@
+#SingleInstance Force
+MsgBox("test messbox")
+^!j::{
+send "my {+}first {^}script"
+
+}
+
+
+
+:*:จรด::jeeradate Kaowkanchana
+
+; Notepad
+#HotIf WinActive("ahk_class Notepad")
+^Space::
+{
+    MsgBox "You pressed WIN+SPACE in Notepad."
+}
+::msg::You typed msg in Notepad
+
+#HotIf
+Numpad0 & Numpad1::{
+	MsgBox("Test")
+}
+
+f3::{
+	startover:
+	age := InputBox("What is your ager?", "age", "h100 w100")
+	if age.result = "Cancel"
+	{
+		MsgBox("let tel me your age")
+		goto startover
+	}
+	else{
+		MsgBox("You are " age.value "  olds")
+	}
+
+}
+
+F4::{
+	MsgBox "Exit !"
+	ExitApp
+
+}
+
+
+

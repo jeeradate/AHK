@@ -1,0 +1,10 @@
+﻿Gui Add, Button, x32 y192 w96 h36, &NotePad++
+Gui Add, Button, x32 y24 w96 h32, &NotePad
+Gui Add, Button, x32 y112 w96 h32, &Calculator
+
+Gui Show, w620 h420, Window
+Return
+
+GuiEscape:
+GuiClose:
+    ExitApp
