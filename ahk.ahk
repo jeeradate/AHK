@@ -2,15 +2,15 @@
 #Requires Autohotkey v2.0+
 #include UIA.ahk
 ; Disable the standard Caps Lock functionality
-SetCapsLockState "AlwaysOff"
+; SetCapsLockState "AlwaysOff"
 
 ; Define the language codes
-languageCode1 := 0x0409  ; English (US)
-languageCode2 := 0x041E  ; Thai
+; languageCode1 := 0x0409  ; English (US)
+; languageCode2 := 0x041E  ; Thai
 Run("D:\AHK\computerUsage.ahk")
 Run("D:\AHK\hotstring.ahk")
 ; Initialize the current language
-currentLanguage := languageCode1
+; currentLanguage := languageCode1
 
 AutoCloseMsgBox("AutoHotkey load successfully", 1000, 's30')
 
@@ -81,17 +81,17 @@ ResetStartClock()
 
 
 ; Function to switch between languages
-SwitchLanguage() {
-    global currentLanguage, languageCode1, languageCode2
-    if (currentLanguage == languageCode1) {
-        currentLanguage := languageCode2
-    } else {
-        currentLanguage := languageCode1
-    }
-    PostMessage(0x0050, 0, currentLanguage, , "A")
-    ; บังคับปิดสถานะ CapsLock ไม่ให้ค้างเป็นตัวใหญ่
-    SetCapsLockState("AlwaysOff")
-}
+; SwitchLanguage() {
+;     global currentLanguage, languageCode1, languageCode2
+;     if (currentLanguage == languageCode1) {
+;         currentLanguage := languageCode2
+;     } else {
+;         currentLanguage := languageCode1
+;     }
+;     PostMessage(0x0050, 0, currentLanguage, , "A")
+;     ; บังคับปิดสถานะ CapsLock ไม่ให้ค้างเป็นตัวใหญ่
+;     SetCapsLockState("AlwaysOff")
+; }
 
 
 ChromeTabJump() {

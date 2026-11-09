@@ -1,7 +1,1 @@
-﻿===== Start A Days : 01/11/2569 07:03:13 =====
-Use  :   32/  32 Minutes Sleep at : 07:35:23
-Brake:   25/  25 Minutes Wakeup at: 08:00:38
-Use  :   90/ 122 Minutes Sleep at : 09:31:36
-Brake:   34/  59 Minutes Wakeup at: 10:05:49
-Use  :   48/ 170 Minutes Sleep at : 10:53:59
-Brake:   19/  78 Minutes Wakeup at: 11:13:19
+﻿===== Start A Days : 10/11/2569 05:41:53 =====

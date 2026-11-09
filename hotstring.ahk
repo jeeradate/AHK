@@ -1,5 +1,23 @@
 #Requires Autohotkey v2.0+
 #SingleInstance Force
+; caplock for switch language
+SetCapsLockState "AlwaysOff"
+languageCode1 := 0x0409  ; English (US)
+languageCode2 := 0x041E  ; Thai
+currentLanguage := languageCode1
+CapsLock:: SwitchLanguage()
+SwitchLanguage() {
+    global currentLanguage, languageCode1, languageCode2
+    if (currentLanguage == languageCode1) {
+        currentLanguage := languageCode2
+    } else {
+        currentLanguage := languageCode1
+    }
+    PostMessage(0x0050, 0, currentLanguage, , "A")
+    ; บังคับปิดสถานะ CapsLock ไม่ให้ค้างเป็นตัวใหญ่
+    SetCapsLockState("AlwaysOff")
+}
+end of switch language
 global IsOnlinePrev := true
 global hsGui
 CheckInterval := 60000 ; ตรวจสอบทุกๆ 1 นาที (สามารถปรับเวลาได้ตามต้องการ เช่น 60000 = 1 นาที)
@@ -56,6 +74,8 @@ hsGui.SetFont("s15 Norm", "Segoe UI")
 lv := hsGui.Add("ListView", "w520 h900 -Multi Grid", ["Hotstring / คำสั่ง", "คำอธิบาย / รายละเอียด"])
 
 ; เพิ่มข้อมูลลงใน ListView (แยกเป็น 2 คอลัมน์อย่างเป็นระเบียบ)
+lv.Add(, "..tk", "พิมพ์ข้อความ '🆒 Thank you very much 💞😀'")
+lv.Add(, "..w", "คืออะไร ไว้ทำอะไร มีประโยชน์อะไรใน Python")
 lv.Add(, "..list", "แสดงรายการ Hotstring ")
 lv.Add(, "..ct", "พิมพ์วันที่และเวลาปัจจุบัน")
 lv.Add(, "..jkt", "พิมพ์ชื่อ 'จีระเดช แก้วกาญจนา'")
@@ -70,11 +90,13 @@ lv.Add(, "..fwp", "เปิด Fastwork Profile")
 lv.Add(, "..r", "พิมพ์ uv run python")
 lv.Add(, "..a", "พิมพ์ .venv\Scripts\activate")
 lv.Add(, "..od", "เปิดโปรแกรม Obsidian ")
+lv.Add(, "..c", "เปิดโปรแกรม VSCode")
 lv.Add(, "..p", "เปิด Paint วาดรูป")
 lv.Add(, "..calc", "เปิดโปรแกรม Calculator")
 lv.Add(, "..np", "เปิดโปรแกรม Notepad++")
 lv.Add(, "..st", "เปิด Snipping Tool")
 lv.Add(, "..yt", "เปิด YouTube")
+lv.Add(, "..m", "เปิด Gmail")
 lv.Add(, "..mc", "เปิด Gmail และ Google Calendar")
 lv.Add(, "..fwp", "เปิด Fastwork Profile")
 lv.Add(, "..fwf", "เปิด Fastwork FreelancerProfile (อีกอัน)")
@@ -82,10 +104,13 @@ lv.Add(, "..web", "เปิดเว็บไซต์ Google")
 lv.Add(, "..ahkh", "เปิด AutoHotkey v2 help")
 lv.Add(, "..hkl", "เปิด HotKeysList")
 lv.Add(, "..hs", "เปิด Autohotkey ใน VSCode")
+lv.Add(, "..sp", "เปิด asample ใน VSCode")
 lv.Add(, "..cs", "ปิดหน้าจอ Monitor (Sleep Monitor)")
 lv.Add(, "..caa", "Close active app ALT+F4")
 lv.add(, "..it", "ตรวจสอบสถานะอินเทอร์เน็ต )")
 lv.Add(, "Ctrl+Space", "เปิด/ปิดหน้าต่าง Hotstring Cheat Sheet")
+lv.Add(, "Ctrl+,", "Right arrow เฉพาะใน VSCode")
+lv.Add(, "Shift+Ctrl+,", "Down arrow เฉพาะใน VSCode")
 lv.Add(, "ctrl+Alt+Space", "Sleep the computer")
 lv.Add(, "ctrl+Alt+Q", "Shutdown the computer (force)")
 btnReload := hsGui.Add("Button", "Default w200 x170", "Reload Hotstring")
@@ -96,7 +121,30 @@ hsGui.OnEvent("Escape", (*) => hsGui.Hide())
 ; วิธีเรียกใช้งานหน้าต่าง
 ; -------------------------------------------------------------
 ; Hotkeys
-::..tel::668-186-57103
+#HotIf WinActive("ahk_exe Code.exe")
++^,:: {
+    ; ส่งสัญญาณปุ่มลูกศรลง (Down Arrow) ไปยัง VS Code
+    Send("{Down}")
+}
+^,:: {
+    ; ส่งสัญญาณปุ่มลูกศรขวา (Right Arrow) ไปยัง VS Code
+    Send("{Right}")
+}
+#HotIf
+::..w::คืออะไร ไว้ทำอะไร มีประโยชน์อะไรใน Python
+::..c:: {
+    vsCodeExe := "code.exe"
+    if WinExist("ahk_exe " vsCodeExe) {
+        ; ถ้าเปิดอยู่แล้ว ให้ดึงหน้าต่างนั้นขึ้นมาแสดงด้านหน้าสุด (Activate)
+        WinActivate("ahk_exe " vsCodeExe)
+    } else {
+        ; ถ้ายังไม่ได้เปิด ให้สั่งรันโปรแกรม VS Code ขึ้นมาใหม่
+        ; (ระบบจะค้นหาตำแหน่ง code.exe จากตัวแปร Environment ของ Windows โดยอัตโนมัติ)
+        Run(vsCodeExe)
+    }
+}
+::..tk:: 🆒 Thank you very much 💞😀
+::..tel::081-865-7103
 ::..r::uv run python
 ::..a::.venv\Scripts\activate
 ::..p:: {
@@ -105,6 +153,10 @@ hsGui.OnEvent("Escape", (*) => hsGui.Hide())
 ::..hs:: {
     Run('"C:\Users\Developer\AppData\Local\Programs\Microsoft VS Code\Code.exe" "D:\ahk"')
 }
+::..sp:: {
+    Run('"C:\Users\Developer\AppData\Local\Programs\Microsoft VS Code\Code.exe" "D:\asample"')
+}
+
 ::..cs:: {
     {
         ; ส่งคำสั่งไปที่ Windows เพื่อปิดหน้าจอ (SendMessage ไปยัง HWND_BROADCAST ด้วย WM_SYSCOMMAND และ SC_MONITORPOWER)
@@ -163,6 +215,10 @@ hsGui.OnEvent("Escape", (*) => hsGui.Hide())
 
         run "C:\Users\Developer\AppData\Local\Microsoft\WindowsApps\Snippingtool.exe"
     }
+}
+::..m:: ;เปิด Gmail
+{
+    run("https://mail.google.com/mail/u/0/?shva=1#inbox")
 }
 ::..mc:: ;Gmail and calendar
 {
