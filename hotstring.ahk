@@ -17,7 +17,7 @@ SwitchLanguage() {
     ; บังคับปิดสถานะ CapsLock ไม่ให้ค้างเป็นตัวใหญ่
     SetCapsLockState("AlwaysOff")
 }
-end of switch language
+;end of switch language
 global IsOnlinePrev := true
 global hsGui
 CheckInterval := 60000 ; ตรวจสอบทุกๆ 1 นาที (สามารถปรับเวลาได้ตามต้องการ เช่น 60000 = 1 นาที)

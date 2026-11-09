@@ -27,7 +27,7 @@ RCtrl:: Send "{Enter}"
 ;^!Space:: SleepPC()
 ;^!q:: ShutdownPC()
 ^Up:: CopyAtCursor()
-CapsLock:: SwitchLanguage()
+; CapsLock:: SwitchLanguage()
 
 
 ; Function area
