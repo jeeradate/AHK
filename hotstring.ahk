@@ -121,6 +121,26 @@ hsGui.OnEvent("Escape", (*) => hsGui.Hide())
 ; วิธีเรียกใช้งานหน้าต่าง
 ; -------------------------------------------------------------
 ; Hotkeys
+#Hotstring ?*
+cL() {
+    ;  ; จำลองการกด Ctrl ลง -> กด Shift ลง -> ปล่อย Shift -> ปล่อย Ctrl
+    Send("{Ctrl down}{Shift down}")
+    Sleep(50) ; หน่วงเวลาสั้น ๆ 50 มิลลิวินาที เพื่อให้ Windows รับรู้
+    Send("{Shift up}{Ctrl up}")
+}
+
+::ใใ:: {
+    cL()
+    MsgBox("⚠️ พิมพ์ใหม่", "Network Warning", "T1 64")
+}
+
+; ฟังก์ชันสำหรับสลับภาษาด้วยปุ่ม Ctrl + Shift
+; switchLanguage2() {
+;     ; ส่งคำสั่งกดปุ่ม Ctrl และ Shift พร้อมกันแล้วปล่อย
+;     Send("^{Shift}")
+; }
+
+
 #HotIf WinActive("ahk_exe Code.exe")
 +^,:: {
     ; ส่งสัญญาณปุ่มลูกศรลง (Down Arrow) ไปยัง VS Code
