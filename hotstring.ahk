@@ -61,7 +61,7 @@ CheckInternetConnection() {
         IsOnlinePrev := isOnlineCurrent
     }
 }
-#HotIf WinActive("ahk_exe LINE.exe") or WinActive("ahk_exe brave.exe") or WinActive("ahk_exe google.exe")
+#HotIf WinActive("ahk_exe LINE.exe") or WinActive("ahk_exe brave.exe") or WinActive("ahk_exe chrome.exe") or WinActive("ahk_exe OpenCode.exe")
 
 $Enter:: Send "+{Enter}"
 $RCtrl:: Send "{Enter}"
