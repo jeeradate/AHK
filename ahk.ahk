@@ -14,14 +14,6 @@ Run("D:\AHK\hotstring.ahk")
 
 AutoCloseMsgBox("AutoHotkey load successfully", 1000, 's30')
 
-
-#HotIf WinActive("ahk_exe LINE.exe") or WinActive("ahk_exe brave.exe")
-
-Enter:: Send "+{Enter}"
-RCtrl:: Send "{Enter}"
-
-#HotIf
-
 ; ^!  = Ctrl+Alt + key
 
 ;^!Space:: SleepPC()

@@ -61,7 +61,12 @@ CheckInternetConnection() {
         IsOnlinePrev := isOnlineCurrent
     }
 }
+#HotIf WinActive("ahk_exe LINE.exe") or WinActive("ahk_exe brave.exe") or WinActive("ahk_exe google.exe")
 
+$Enter:: Send "+{Enter}"
+$RCtrl:: Send "{Enter}"
+
+#HotIf
 ; -------------------------------------------------------------
 ; สร้างหน้าต่าง GUI สำหรับแสดงรายการ Hotstring
 ; -------------------------------------------------------------
