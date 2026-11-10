@@ -52,10 +52,10 @@ CheckInternetConnection() {
     if (isOnlineCurrent != IsOnlinePrev) {
         if (isOnlineCurrent) {
             ; กรณี: อินเทอร์เน็ตกลับมาใช้งานได้แล้ว (แสดง MsgBox เด้งบอก แล้วปิดเองใน 3 วินาที)
-            MsgBox("✅ อินเทอร์เน็ตเชื่อมต่อเรียบร้อยแล้ว!", "Network Status", "T3 64")
+            MsgBox("✅ อินเทอร์เน็ตเชื่อมต่อเรียบร้อยแล้ว!", "Network Status", "T3")
         } else {
             ; กรณี: อินเทอร์เน็ตหลุด (แสดง MsgBox เตือนตัวใหญ่กลางจอ ต้องกด OK ถึงจะหาย)
-            MsgBox("⚠️ อินเทอร์เน็ตหลุด! กรุณาตรวจสอบการเชื่อมต่อของคุณ", "Network Warning", "T3 64")
+            MsgBox("⚠️ อินเทอร์เน็ตหลุด! กรุณาตรวจสอบการเชื่อมต่อของคุณ", "Network Warning", "T3")
         }
         ; อัปเดตสถานะปัจจุบันเก็บไว้เทียบในรอบถัดไป
         IsOnlinePrev := isOnlineCurrent
@@ -101,8 +101,8 @@ lv.Add(, "..calc", "เปิดโปรแกรม Calculator")
 lv.Add(, "..np", "เปิดโปรแกรม Notepad++")
 lv.Add(, "..st", "เปิด Snipping Tool")
 lv.Add(, "..yt", "เปิด YouTube")
-lv.Add(, "..m", "เปิด Gmail")
-lv.Add(, "..mc", "เปิด Gmail และ Google Calendar")
+lv.Add(, "..ml", "เปิด Gmail")
+lv.Add(, "..cd", "เปิด Gmail และ Google Calendar")
 lv.Add(, "..fwp", "เปิด Fastwork Profile")
 lv.Add(, "..fwf", "เปิด Fastwork FreelancerProfile (อีกอัน)")
 lv.Add(, "..web", "เปิดเว็บไซต์ Google")
@@ -111,7 +111,6 @@ lv.Add(, "..hkl", "เปิด HotKeysList")
 lv.Add(, "..hs", "เปิด Autohotkey ใน VSCode")
 lv.Add(, "..sp", "เปิด asample ใน VSCode")
 lv.Add(, "..cs", "ปิดหน้าจอ Monitor (Sleep Monitor)")
-lv.Add(, "..caa", "Close active app ALT+F4")
 lv.add(, "..it", "ตรวจสอบสถานะอินเทอร์เน็ต )")
 lv.Add(, "Ctrl+Space", "เปิด/ปิดหน้าต่าง Hotstring Cheat Sheet")
 lv.Add(, "Ctrl+,", "Right arrow เฉพาะใน VSCode")
@@ -136,7 +135,7 @@ cL() {
 
 ::ใใ:: {
     cL()
-    MsgBox("⚠️ พิมพ์ใหม่", "Network Warning", "T1 64")
+    MsgBox("⚠️ พิมพ์ใหม่", "Network Warning", "T1 ")
 }
 
 ; ฟังก์ชันสำหรับสลับภาษาด้วยปุ่ม Ctrl + Shift
@@ -217,10 +216,7 @@ cL() {
     statusText := IsOnlinePrev ? "ออนไลน์อยู่ (Online)" : "ออฟไลน์ (Offline)"
     MsgBox("สถานะอินเทอร์เน็ตปัจจุบัน: " . statusText, "Network Status Check", "T2 100")
 }
-::caa::
-{
-    Send("!{F4}")
-}
+
 :o:..oha::486/63 ถ.สุขขุมวิท ต.เนินพระ อ.เมือง จ.ระยอง 21000
 :o:..hat::บ้านเลขที่ 58/33 หมู่ 5 หมู่บ้านรามนุช 18 ตำบลสัตหีบ อำเภอสัตหีบ จังหวัดชลบุรี 20180
 :o:..hae::58/33 Moo 5, Ramnuch 18 Village Sattahip Sub-district, Sattahip District Chon Buri 20180, Thailand
@@ -241,14 +237,13 @@ cL() {
         run "C:\Users\Developer\AppData\Local\Microsoft\WindowsApps\Snippingtool.exe"
     }
 }
-::..m:: ;เปิด Gmail
+::..ml:: ;เปิด Gmail
 {
     run("https://mail.google.com/mail/u/0/?shva=1#inbox")
 }
-::..mc:: ;Gmail and calendar
+::..cd:: ;Gmail and calendar
 {
-    run("https://mail.google.com/mail/u/0/?shva=1#inbox")
-    Run("https://calendar.google.com")
+    run("https://calendar.google.com")
 }
 ::..list::
 {
