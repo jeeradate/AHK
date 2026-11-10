@@ -95,7 +95,7 @@ lv.Add(, "..fwp", "เปิด Fastwork Profile")
 lv.Add(, "..r", "พิมพ์ uv run python")
 lv.Add(, "..a", "พิมพ์ .venv\Scripts\activate")
 lv.Add(, "..od", "เปิดโปรแกรม Obsidian ")
-lv.Add(, "..c", "เปิดโปรแกรม VSCode")
+lv.Add(, "..vc", "เปิดโปรแกรม VSCode")
 lv.Add(, "..p", "เปิด Paint วาดรูป")
 lv.Add(, "..calc", "เปิดโปรแกรม Calculator")
 lv.Add(, "..np", "เปิดโปรแกรม Notepad++")
@@ -157,7 +157,7 @@ cL() {
 }
 #HotIf
 ::..w::คืออะไร ไว้ทำอะไร มีประโยชน์อะไรใน Python
-::..c:: {
+::..vc:: {
     vsCodeExe := "code.exe"
     if WinExist("ahk_exe " vsCodeExe) {
         ; ถ้าเปิดอยู่แล้ว ให้ดึงหน้าต่างนั้นขึ้นมาแสดงด้านหน้าสุด (Activate)

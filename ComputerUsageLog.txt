@@ -11,3 +11,7 @@ Brake:    1/  48 Minutes Wakeup at: 09:46:36
 ===== Start A Days : 10/11/2569 09:46:52 =====
 Use  :    0/   0 Minutes Sleep at : 09:47:26
 Brake:   21/  21 Minutes Wakeup at: 10:08:56
+Use  :   56/  56 Minutes Sleep at : 11:05:22
+Brake:   12/  33 Minutes Wakeup at: 11:18:13
+Use  :   36/  92 Minutes Sleep at : 11:54:49
+Brake:    0/  33 Minutes Wakeup at: 11:54:55
